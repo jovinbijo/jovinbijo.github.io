@@ -9,16 +9,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0A0D12;
-    --bg-elevated:#10141B;
-    --bg-card:#131820;
-    --text:#E9EDF2;
-    --text-dim:#8A94A6;
-    --text-faint:#5B6472;
-    --route:#F2994A;
-    --splat:#5FE3C0;
-    --border:#1E242E;
-    --border-soft:#181D26;
+    --bg:#060607;
+    --bg-elevated:#0D0D0F;
+    --bg-card:#131315;
+    --text:#EDEBE7;
+    --text-dim:#9B9B9F;
+    --text-faint:#5A5A5E;
+    --route:#FF2A3C;
+    --splat:#C7CBD2;
+    --border:#232326;
+    --border-soft:#17171A;
     --max-w:1120px;
   }
 
@@ -64,7 +64,7 @@
     position:fixed;
     top:0;left:0;right:0;
     z-index:100;
-    background:rgba(10,13,18,0.72);
+    background:rgba(6,6,7,0.72);
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--border-soft);
   }
@@ -830,9 +830,9 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 
     ctx.beginPath();
     ctx.moveTo(path[0].x, path[0].y);
-    ctx.strokeStyle = '#F2994A';
+    ctx.strokeStyle = '#FF2A3C';
     ctx.lineWidth = 2.4;
-    ctx.shadowColor = 'rgba(242,153,74,0.5)';
+    ctx.shadowColor = 'rgba(255,42,60,0.5)';
     ctx.shadowBlur = 10;
 
     for(let i=0;i<segLens.length;i++){
@@ -862,7 +862,7 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
       if(passedLen <= target){
         ctx.beginPath();
         ctx.arc(path[i].x, path[i].y, i===0?3:2, 0, Math.PI*2);
-        ctx.fillStyle = 'rgba(242,153,74,0.85)';
+        ctx.fillStyle = 'rgba(255,42,60,0.85)';
         ctx.fill();
       }
     }
@@ -870,7 +870,7 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
     // moving marker at cursor
     ctx.beginPath();
     ctx.arc(cursor.x, cursor.y, 4.5, 0, Math.PI*2);
-    ctx.fillStyle = '#F2994A';
+    ctx.fillStyle = '#FF2A3C';
     ctx.fill();
 
     // spawn particle dissolve once route completes
@@ -890,7 +890,7 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
         const alpha = Math.max(0, 1 - p.life/p.maxLife);
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-        ctx.fillStyle = `rgba(95,227,192,${alpha*0.85})`;
+        ctx.fillStyle = `rgba(199,203,210,${alpha*0.85})`;
         ctx.fill();
       });
       ctx.restore();
@@ -939,7 +939,7 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
   let phase = 0;
   function draw(){
     ctx.clearRect(0,0,w,h);
-    ctx.strokeStyle = 'rgba(242,153,74,0.9)';
+    ctx.strokeStyle = 'rgba(255,42,60,0.9)';
     ctx.lineWidth = 2;
     ctx.beginPath();
     nodes.forEach((p,i)=> i===0? ctx.moveTo(p.x,p.y) : ctx.lineTo(p.x,p.y));
@@ -948,7 +948,7 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
     nodes.forEach((p,i)=>{
       ctx.beginPath();
       ctx.arc(p.x,p.y, i===0||i===nodes.length-1?4:2.4, 0, Math.PI*2);
-      ctx.fillStyle = i===0||i===nodes.length-1 ? '#F2994A' : 'rgba(242,153,74,0.6)';
+      ctx.fillStyle = i===0||i===nodes.length-1 ? '#FF2A3C' : 'rgba(255,42,60,0.6)';
       ctx.fill();
     });
 
@@ -964,7 +964,7 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
       ctx.beginPath();
       ctx.arc(mx,my,5,0,Math.PI*2);
       ctx.fillStyle = '#FFFFFF';
-      ctx.shadowColor = '#F2994A';
+      ctx.shadowColor = '#FF2A3C';
       ctx.shadowBlur = 12;
       ctx.fill();
       ctx.shadowBlur = 0;
@@ -1015,8 +1015,8 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
       const x = d.baseX + dx;
       const y = d.baseY + dy;
       const grad = ctx.createRadialGradient(x,y,0,x,y,d.r*3);
-      grad.addColorStop(0, 'rgba(95,227,192,0.9)');
-      grad.addColorStop(1, 'rgba(95,227,192,0)');
+      grad.addColorStop(0, 'rgba(199,203,210,0.9)');
+      grad.addColorStop(1, 'rgba(199,203,210,0)');
       ctx.beginPath();
       ctx.arc(x,y,d.r*3,0,Math.PI*2);
       ctx.fillStyle = grad;
